@@ -185,7 +185,7 @@ input[type="submit"]:active
     color: red;
 }
 .load{
-    background-color: #fff;
+    /* background-color:; */
     width: 100vw;
     height: 100vh;
     display: flex;

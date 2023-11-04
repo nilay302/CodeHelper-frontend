@@ -233,7 +233,7 @@ function SignUp() {
             <l-spiral
             size="40"
             speed="0.9" 
-            color="black" 
+            color="rgb(252,252,252)" 
             ></l-spiral>
         </div>
         

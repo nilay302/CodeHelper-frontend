@@ -184,3 +184,11 @@ input[type="submit"]:active
 .error_login{
     color: red;
 }
+.load{
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,8 +1,12 @@
 import "./Login.css";
+import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import {spiral} from "ldrs";
 function Login() {
+    spiral.register();
+    const [loading, setLoading] = useState(true);
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -17,6 +21,7 @@ function Login() {
     onSubmit: (values) => {
       console.log(values);
     //   console.log("Hii");
+      setLoading(false);
       LoginHandler(values);
     },
   });
@@ -39,17 +44,19 @@ function Login() {
       .then((response) => {
         console.log(response)
         if (response.status === 200) {
+            setLoading(true);
           const data = response.data;
           localStorage.setItem("userName", values.username);
         //   localStorage.setItem("token", data["token"]);
           console.log(data);
           console.log(response.status);
           console.log(values.username);
-          alert("Successfully Logged In");
-          window.location = "/admin";
+        //   alert("Successfully Logged In");
+          window.location = "/home";
         }
       })
       .catch((err) => {
+        setLoading(true);
         if (err.message === "Request failed with status code 400") {
           // setAlertCode(1);
           alert("Bad Request");
@@ -69,118 +76,134 @@ function Login() {
       });
     // values.username = "";
     values.password = "";
-  };
-  return (
-    <div>
-      <section>
-        {" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
-        <span></span> <span></span> <span></span> <span></span> <span></span>
-        <div className="signin">
-          <div className="content">
-            <h2>Sign In</h2>
-
-            <form className="form" onSubmit={(e) => {
-                console.log(e);
-                formik.handleSubmit(e)}}>
-              <div className="inputBox">
-                <input id="username" 
-                name="username" 
-                type="text" 
-                required  
-                value={formik.values.username} 
-                onBlur={formik.handleBlur}
-                onChange={(e) => {
-                    console.log(e.target.value)
-                    formik.handleChange(e);
-                }}/>{" "}
-                <i>Username</i>
+  }; 
+  if (loading===true){
+    return (
+        <div>
+          <section>
+            {" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+            <span></span> <span></span> <span></span> <span></span> <span></span>
+            <div className="signin">
+              <div className="content">
+                <h2>Sign In</h2>
+    
+                <form className="form" onSubmit={(e) => {
+                    console.log(e);
+                    formik.handleSubmit(e)}}>
+                  <div className="inputBox">
+                    <input id="username" 
+                    name="username" 
+                    type="text" 
+                    required  
+                    value={formik.values.username} 
+                    onBlur={formik.handleBlur}
+                    onChange={(e) => {
+                        console.log(e.target.value)
+                        formik.handleChange(e);
+                    }}/>{" "}
+                    <i>Username</i>
+                  </div>
+                        {formik.touched.username && formik.errors.username ? (
+                        <p className="error_login">{formik.errors.username}</p>
+                        ) : null}
+    
+                  <div className="inputBox">
+                    <input 
+                    id="password"
+                    name="password"
+                    type="password" 
+                    required 
+                    value={formik.values.password}
+                    onBlur={formik.handleBlur}
+                    onChange={(e) => {
+                        console.log(e.target.value)
+                        formik.handleChange(e);
+                    }}/> <i>Password</i>
+                  </div>
+                        {formik.touched.password && formik.errors.password ? (
+                        <p className="error_login">{formik.errors.password}</p>
+                        ) : null}
+    
+                  <div className="links">
+                    {" "}
+                    <a href="#">Forgot Password</a> <a href="/signup">Signup</a>
+                  </div>
+    
+                  <button type="submit" style={{border:0, borderRadius:"5px"}} className="inputBox">
+                    <input type="submit" value="Login" />
+                  </button>
+                </form>
               </div>
-                    {formik.touched.username && formik.errors.username ? (
-                    <p className="error_login">{formik.errors.username}</p>
-                    ) : null}
-
-              <div className="inputBox">
-                <input 
-                id="password"
-                name="password"
-                type="password" 
-                required 
-                value={formik.values.password}
-                onBlur={formik.handleBlur}
-                onChange={(e) => {
-                    console.log(e.target.value)
-                    formik.handleChange(e);
-                }}/> <i>Password</i>
-              </div>
-                    {formik.touched.password && formik.errors.password ? (
-                    <p className="error_login">{formik.errors.password}</p>
-                    ) : null}
-
-              <div className="links">
-                {" "}
-                <a href="#">Forgot Password</a> <a href="/signup">Signup</a>
-              </div>
-
-              <button type="submit" style={{border:0, borderRadius:"5px"}} className="inputBox">
-                <input type="submit" value="Login" />
-              </button>
-            </form>
-          </div>
+            </div>
+          </section>
+        </div>);
+  }
+   if(loading===false){
+    return(
+        <div className="load">
+            <l-spiral
+            size="40"
+            speed="0.9" 
+            color="black" 
+            ></l-spiral>
         </div>
-      </section>
-    </div>
-  );
+        
+    )
+   }
+    
+        
+  
 }
 
 export default Login;

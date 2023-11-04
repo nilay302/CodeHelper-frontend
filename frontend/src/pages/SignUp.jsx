@@ -1,8 +1,13 @@
 import './Login.css'
+import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import {spiral} from "ldrs";
 function SignUp() {
+    spiral.register();
+    const [loading, setLoading] = useState(true);
+
     const formik = useFormik({
         initialValues: {
           username: "",
@@ -20,6 +25,7 @@ function SignUp() {
         }),
         onSubmit: (values) => {
           console.log(values);
+          setLoading(false);
           LoginHandler(values);
         },
       });
@@ -47,11 +53,11 @@ function SignUp() {
               const data = response.data;
               localStorage.setItem("userName", values.username);
             //   localStorage.setItem("token", data["token"]);
-              console.log(data["token"]);
+              setLoading(true);
               console.log(response.status);
               console.log(values.username);
               alert("Successfully Logged In");
-              window.location = "/admin";
+              window.location = "/";
             }
           })
           .catch((err) => {
@@ -75,7 +81,8 @@ function SignUp() {
         // values.username = "";
         values.password = "";
       };
-  return (
+  if(loading===true){
+    return (
     <div>
       <section>
         {" "}
@@ -219,6 +226,20 @@ function SignUp() {
       </section>
     </div>
   );
+  }
+  if(loading===false){
+    return(
+        <div className="load">
+            <l-spiral
+            size="40"
+            speed="0.9" 
+            color="black" 
+            ></l-spiral>
+        </div>
+        
+    )
+  }
+  
 }
 
 export default SignUp;

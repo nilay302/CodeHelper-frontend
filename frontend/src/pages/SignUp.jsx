@@ -1,5 +1,5 @@
 import './Login.css'
-function Login() {
+function SignUp() {
   return (
     <div>
       <section>
@@ -58,7 +58,7 @@ function Login() {
         <span></span> <span></span> <span></span> <span></span> <span></span>
         <div className="signin">
           <div className="content">
-            <h2>Sign In</h2>
+            <h2>Sign Up</h2>
 
             <div className="form">
               <div className="inputBox">
@@ -71,7 +71,7 @@ function Login() {
 
               <div className="links">
                 {" "}
-                <a href="#">Forgot Password</a> <a href="/signup">Signup</a>
+                <a href="#"></a> <a href="/">SignIn</a>
               </div>
 
               <div className="inputBox">
@@ -85,4 +85,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;

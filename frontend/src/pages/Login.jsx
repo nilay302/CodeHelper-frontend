@@ -44,15 +44,13 @@ function Login() {
       .then((response) => {
         console.log(response)
         if (response.status === 200) {
-            setLoading(true);
+          setLoading(true);
           const data = response.data;
-          localStorage.setItem("userName", values.username);
-        //   localStorage.setItem("token", data["token"]);
-          console.log(data);
+          localStorage.setItem("Codeforces", data.content.codeforces);
+          localStorage.setItem("Leetcode", data.content.leetcode);
+          console.log(data.content);
           console.log(response.status);
-          console.log(values.username);
-        //   alert("Successfully Logged In");
-          window.location = "/home";
+          window.location = "/codeforces";
         }
       })
       .catch((err) => {

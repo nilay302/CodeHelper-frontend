@@ -1,0 +1,28 @@
+.navbar{
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100vw;
+    height: 7%;
+    background: #222; 
+    display:flex ;
+    justify-content: space-around;
+    align-items: center;
+}
+.subtopic{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    
+}
+.subtopic a{
+    text-decoration: none;
+    color: #0f0;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+.title{
+    font-size: 2.5rem;
+    color: #0f0;
+    font-weight: 500;
+}

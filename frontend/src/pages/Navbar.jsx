@@ -1,6 +1,6 @@
 import './Navbar.css';
 function Navbar(props) {
-    console.log(props);
+    // console.log(props);
   return (
     <div className="navbar">
         <div className='title'>

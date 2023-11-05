@@ -15,7 +15,7 @@ function Login() {
     validationSchema: Yup.object({
       username: Yup.string().required("Username is required*"),
       password: Yup.string()
-        .min(8, "minimum 8 required")
+        .min(6, "minimum 6 required")
         .required("Password is required*"),
     }),
     onSubmit: (values) => {
@@ -49,7 +49,7 @@ function Login() {
           localStorage.setItem("Codeforces", data.content.codeforces);
           localStorage.setItem("Leetcode", data.content.leetcode);
           console.log(data.content);
-          console.log(response.status);
+        //   console.log(response.status);
           window.location = "/codeforces";
         }
       })

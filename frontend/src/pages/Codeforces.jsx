@@ -19,6 +19,7 @@ function Codeforces() {
             if (response.status === 200) {
             //   console.log(response.data.content);
               getContent(response.data.content)
+              gettingProblems();
              
             } else {
               alert("Some error occurred.");
@@ -32,31 +33,33 @@ function Codeforces() {
       }, []);
 
       const [problems, getProblems] = useState({});
-      useEffect(() => {
-        const URL = `https://codehelper-xdml.onrender.com/codeforces/getTags?codeforces=${localStorage.getItem("Codeforces")}?rank=${content.rank}`;
-        axios
-          .get(URL, 
-            {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-          .then((response) => {
-            console.log(response);
-            if (response.status === 200) {
-              console.log(response.data.content);
-              getProblems(response.data.content)
-             
-            } else {
-              alert("Some error occurred.");
-              return;
-            }
-          })
-          .catch((err) => {
-            alert(err);
-            return;
-          });
-      }, []);
+      function gettingProblems(){
+        console.log(content.rating)
+            const URL = `https://codehelper-xdml.onrender.com/codeforces/getTags?codeforces=${localStorage.getItem("Codeforces")}&rank=${content.rating}`;
+            axios
+              .get(URL, 
+                {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              })
+              .then((response) => {
+                console.log(response);
+                if (response.status === 200) {
+                  console.log(response.data.content);
+                  getProblems(response.data.content)
+                 
+                } else {
+                  alert("Some error occurred.");
+                  return;
+                }
+              })
+              .catch((err) => {
+                alert(err);
+                return;
+              });
+      }
+      
   return (
     <div>
         <Navbar pg = {pg}/>
@@ -92,20 +95,20 @@ function Codeforces() {
                     <div className="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                         <h2 className="font-weight-bold mt-0 mb-4">Recommended Questions:</h2>
 
-                        {/* {
-                            content.map((data, i)=>{
+                        {
+                            Object.keys(problems).map((data, i)=>{
                                 return (
                                     <div className="bg-white card mb-4 order-list shadow-sm" key={i}>
                                         <div className="gold-members p-4">
                                             <h3>
-                                                {data.topic}
+                                                {data}
                                             </h3>
                                             <hr/>
                                             <div>
                                                 {
-                                                    data.problems.map((p, j)=>{
+                                                    problems[data].map((p, j)=>{
                                                         return (
-                                                            <a href={`https://${p.problem_link}`} key={j}><p className="problems">{p.problem_name}</p></a>
+                                                            <a href={`https://${p[1]}`} key={j}><p className="problems">{p[0]}</p></a>
                                                         )
                                                     })
                                                 }
@@ -114,7 +117,7 @@ function Codeforces() {
                                     </div>
                                 )
                             })
-                        } */}
+                        }
                         
                         
                     </div>

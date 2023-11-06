@@ -18,9 +18,8 @@ function Codeforces() {
             // console.log(response);
             if (response.status === 200) {
             //   console.log(response.data.content);
-              getContent(response.data.content)
-              gettingProblems();
-             
+              getContent(response.data.content) 
+              localStorage.setItem("Rating", response.data.content.rating);   
             } else {
               alert("Some error occurred.");
               return;
@@ -30,12 +29,14 @@ function Codeforces() {
             alert(err);
             return;
           });
+          gettingProblems();
+          console.log(content.rating)
       }, []);
 
       const [problems, getProblems] = useState({});
       function gettingProblems(){
-        console.log(content.rating)
-            const URL = `https://codehelper-xdml.onrender.com/codeforces/getTags?codeforces=${localStorage.getItem("Codeforces")}&rank=${content.rating}`;
+        // console.log(content.rating)
+            const URL = `https://codehelper-xdml.onrender.com/codeforces/getTags?codeforces=${localStorage.getItem("Codeforces")}&rank=${localStorage.getItem("Rating")}&`;
             axios
               .get(URL, 
                 {

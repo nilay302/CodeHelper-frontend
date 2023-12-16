@@ -212,7 +212,7 @@ function Leetcode() {
                                 <h5 className="mb-2 mt-3"><b>No. of Contests:</b> {profile.noOfContests}</h5>
                                 <h5 className="mb-2 mt-3"><b>Country:</b> {profile.country}</h5>
                                 <h5 className="mb-2 mt-3"><b>College:</b> {profile.college}</h5>
-                                <button className="profileAnalysis" onClick={changeAnalysis}>Profile Analysis</button>
+                                <button className="profileAnalysis" onClick={changeAnalysis}>{profileAnalysis?"Questions":"Profile Analysis"}</button>
 
                             </div>
                         </div>

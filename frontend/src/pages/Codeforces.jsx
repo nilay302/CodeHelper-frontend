@@ -132,7 +132,7 @@ function Codeforces() {
                                 <h5 className="mb-2 mt-3"><b>Max Rank: </b>{content.maxRank}</h5>
                                 <h5 className="mb-2 mt-3"><b>Max Rating:</b> {content.maxRating}</h5>
                                 <h5 className="mb-2 mt-3"><b>Organization:</b> {content.organization}</h5>
-                                <button onClick={renderPageAnalysis}>Profile Analysis</button>
+                                <button className="profileAnalysis" onClick={renderPageAnalysis}>Profile Analysis</button>
                             </div>
                         </div>
                     </div>
@@ -158,7 +158,7 @@ function Codeforces() {
                                                 {
                                                     problems[data].map((p, j)=>{
                                                         return (
-                                                            <a href={`https://${p[1]}`} key={j}><p className="problems">{p[0]}</p></a>
+                                                            <a href={`${p[1]}`} key={j}><p className="problems">{p[0]}</p></a>
                                                         )
                                                     })
                                                 }

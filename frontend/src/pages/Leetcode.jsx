@@ -32,6 +32,33 @@ function Leetcode() {
             return;
           });
       }, []);
+
+      const [profile, getProfile] = useState([]);
+    useEffect(() => {
+        const URL = `https://codehelper-xdml.onrender.com/leetcode/getProfile?leetcode=${localStorage.getItem("Leetcode")}`;
+        axios
+          .get(URL, 
+            {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((response) => {
+            // console.log(response);
+            if (response.status === 200) {
+                getProfile(response.data.content);
+             
+            } else {
+            //   alert("Some error occurred.");
+              return;
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+            // alert(err);
+            return;
+          });
+      }, []);
   return (
     <div>
         <Navbar pg = {pg}/>
@@ -47,6 +74,18 @@ function Leetcode() {
                             <img className="mb-4 rounded-pill shadow-sm mt-1" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="profile"/>
                             <div className="osahan-user-media-body">
                                 <h3 className="mb-2">{localStorage.getItem("Leetcode")}</h3>
+                                <br/>
+                                <h5 className="mb-2 mt-3"><b>Rating:</b> {profile.rating}</h5>
+                                <h5 className="mb-2 mt-3"><b>Rank: </b>{profile.rank}</h5>
+                                <h5 className="mb-2 mt-3"><b>Level:</b> {profile.level}</h5>
+                                <h5 className="mb-2 mt-3"><b>views:</b> {profile.views}</h5>
+                                <h5 className="mb-2 mt-3"><b>Solved Questions:</b> {profile.solved}</h5>
+                                <h5 className="mb-2 mt-3"><b>Easy:</b> {profile.easy}</h5>
+                                <h5 className="mb-2 mt-3"><b>Medium:</b> {profile.medium}</h5>
+                                <h5 className="mb-2 mt-3"><b>Hard:</b> {profile.hard}</h5>
+                                <h5 className="mb-2 mt-3"><b>No. of Contests:</b> {profile.noOfContests}</h5>
+                                <h5 className="mb-2 mt-3"><b>Country:</b> {profile.country}</h5>
+                                <h5 className="mb-2 mt-3"><b>College:</b> {profile.college}</h5>
                             </div>
                         </div>
                     </div>

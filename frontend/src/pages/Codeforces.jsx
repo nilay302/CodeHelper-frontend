@@ -62,7 +62,7 @@ function Codeforces() {
       }
 
       function renderPageAnalysis() {
-        const URL = `http://localhost:8080/codeforces/getAnalysis?codeforces=${localStorage.getItem("Codeforces")}&rank=${localStorage.getItem("Rating")}&`;
+        const URL = `http://localhost:3030/codeforces/getAnalysis?codeforces=${localStorage.getItem("Codeforces")}&rank=${localStorage.getItem("Rating")}&`;
             axios
               .get(URL, 
                 {
